@@ -1,0 +1,57 @@
+Tenemos un planeta, se llama el planeta Wa-Tor
+
+-----Caracteristicas del planeta -------------
++Esta habitado por peces y tiburones (machos y hembras)
+
+
+--------Caracteristicas del programa --------------
++Cada habitante debe estar representado por un hilo concurrente
++El mundo es un planeta acuático.
++Su forma es toroidal → los bordes están conectados:
+---salir por el norte → entras por el sur
+---salir por el este → entras por el oeste.
++Es un mundo reticulado de 20 × 20 celdas.
++Cada celda puede contener varios habitantes, lo que puede generar interacciones.
+
++Cantidad inicial de especies:
+    100 peces (50 machos, 50 hembras)
+    10 tiburones(mitad mitad)
++los habitantes se colocan aleatoriamente en el mapa al inicio
+
+=====Movimientos=====
+cada habitante nada desde su posicion inicial una de cuatro dimensiones:
+  *Norte
+  *Sur
+  *Este
+  *Oeste
+
++Movimiento es aleatorio
++Debido al tipo de mundo:
+  si un habitante sale del borde superior, reaparece en el borde inferior
+  lo mismo para izquierda y derecha
+
+=======interacciones======
+
+a) Misma especie + mismo sexo
+  *uno aniquila al otro.
+  *No se especifica quien sobrevive, asi que se puede decidir por cualquier criterio
+
+b)especies diferentes
+  * El tiburon siempre aniquila al pez, sin importar el sexo
+
+c) Misma especie + diferente sexo
+  *Se reproducen
+    -Nace un individuo de la misma especie
+    -Su sexo es al azar con probabilidades 50% macho / 50% hembra
+  * despues de reproducire, ambos continuan su camino(no mueren).
+
+=========Concurrencia y sincronización==============
+Cada habitante debe ejecutarse en paralelo mediante hilos.
+Es necesario controlar el acceso a las celdas del mapa para evitar inconsistencias (por ejemplo, dos hilos editando la misma celda simultáneamente).
+El sistema debe manejar:
+Movimientos concurrentes.
+Colisiones.
+Creación de nuevos habitantes (nuevos hilos).
+Eliminación de habitantes aniquilados (hilos que terminan).
+
+
